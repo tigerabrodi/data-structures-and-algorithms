@@ -19,3 +19,7 @@ Data structures are a particular way of organizing data in a computer so that it
 Data structures are categorized into two main types: primitive and non-primitive. Primitive data structures include basic types like integers, floats, and characters, while non-primitive structures, which are more complex, include arrays, lists, trees, and graphs.
 
 # Complexity Analysis
+
+The process of determining how efficient an algorithm is. It is a measure of how much time and space an algorithm requires to run.
+
+These are called time complexity and space complexity.
