@@ -203,3 +203,45 @@ But you do not wanna have to go through the trouble of importing a queue data st
 Amortized analysis averages the time required to perform a sequence of data structure operations over all the operations performed. Unlike average-case analysis, which considers probabilities of different inputs, amortized analysis guarantees the average performance of each operation in the worst case.
 
 It provides a more realistic expectation of the algorithm's performance, especially when the algorithm has occasional costly operations.
+
+# Linked Lists
+
+Linked List is stored differently in memory.
+
+**Singly Linked List:** Each element is a node. Each node has a value and a pointer to the next node.
+
+In memory, arrays are stored in a block of memory.
+
+Nodes of Linked Lists are dynamically allocated in the heap as the list grows. They don't occupy contiguous memory locations. Instead, each node can be anywhere in memory. The pointers in each node are used to "link" these scattered pieces together logically.
+
+## Array in memory
+
+Imagine a row of boxes, each representing an array element, placed side by side. The address of each element is predictable based on the array's base address and the size of each element.
+
+```
+| Element 0 | Element 1 | Element 2 | Element 3 | ... | Element N |
+|-----------|-----------|-----------|-----------|-----|-----------|
+ 0x00A      0x00B       0x00C       0x00D      ...   0x00Z
+```
+
+## Linked List in memory
+
+Think of each node as a separate entity, potentially scattered in memory. Each node contains its data and a pointer, which acts like an arrow pointing to the next node. The actual memory addresses of these nodes are not sequential.
+
+```
+[Node 0: Data | Ptr] --> [Node 1: Data | Ptr] --> [Node 2: Data | Ptr] --> ...
+   0x100          |        0x1A2          |        0x03F          |
+                  -------------------------        ----------------
+```
+
+## Advantages over array
+
+- **Dynamic Size:** Capable of growing and shrinking as needed during runtime.
+- **Efficient Insertions/Deletions:** Especially at the beginning or in the middle, without the need to shift elements as in arrays.
+- **Memory Utilization:** More efficient memory usage since it allocates memory as needed.
+
+## Disadvantages over array
+
+- **Memory Overhead:** Each node requires extra memory for a pointer, which can be significant, especially in systems with limited memory.
+- **No Random Access:** Accessing elements is not as straightforward as in arrays, as it requires sequential access from the beginning of the list.
+- **Increased Complexity:** Implementing and managing linked lists can be more complex than arrays, with additional considerations for pointer manipulation and potential issues like memory leaks.
