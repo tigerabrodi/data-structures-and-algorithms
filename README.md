@@ -230,6 +230,8 @@ Set an element by index is O(n) linear time. This is because the computer has to
 
 ### Init
 
+Init is constant time O(1).
+
 ### Copy
 
 Copy is O(n) linear time.
@@ -276,6 +278,8 @@ How it may look like for a 32 bit system:
 | Integer | Ptr| Integer | Ptr| Integer | Ptr
  0x100     0x104 0x108   0x10C 0x110   0x114
 ```
+
+For doubly linked list, we would have two pointers, in total 12 bytes per node.
 
 ## Advantages over array
 
