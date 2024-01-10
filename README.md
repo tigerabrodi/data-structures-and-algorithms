@@ -49,3 +49,42 @@ Pointers are variables that store the memory address of another variable. They a
 Computer is able to access memory given a memory address very fast.
 
 # Big O Notation
+
+Big O notation is a way of describing how fast the runtime grows relative to the input as the input gets arbitrarily large.
+
+Different algorithms can have different runtimes for the same input. And they would grow at different rates as the input gets arbitrarily large.
+
+Different O notations:
+
+- O(1) - **Constant Time:** The runtime is the same regardless of the input size e.g. accessing an array element by index.
+- O(log n) - **Logarithmic Time:** The runtime grows logarithmically in proportion to the input size. This means that as the input gets arbitrarily large, the runtime grows very slowly e.g. if problem is divided in half each time.
+- O(n log n) - **Linearithmic Time:** The runtime grows in proportion to N log N of the input size. This means that as the input gets arbitrarily large, the runtime grows faster than linear time but slower than quadratic time e.g. sorting algorithms
+- O(n) - **Linear Time:** The runtime grows directly in proportion to the input size. This means that as the input gets arbitrarily large, the runtime grows at the same rate e.g. iterating through an array.
+- O(N^2) - **Quadratic Time:** The runtime grows quadratically in proportion to the input size. This means that as the input gets arbitrarily large, the runtime grows very fast e.g. nested loops.
+- O(2^n) - **Exponential Time:** The runtime grows exponentially in proportion to the input size. This means that as the input gets arbitrarily large, the runtime grows even faster than quadratic time e.g. recursive algorithms that solve a problem of size N by recursively solving two smaller problems of size N-1.
+
+## Mathematical term
+
+Asymptotic analysis is a method of describing limiting behavior. It is used in many branches of mathematics, but especially in mathematical analysis of algorithms. It looks like this:
+
+```
+f(n) = O(g(n))
+```
+
+As N grows towards infinity, how does the runtime of the algorithm grow?
+
+## What is N?
+
+Abstract concept of input size. It is the number of elements in the input.
+
+## Accessing in memory
+
+Accessing memory is O(1) constant time. If we had to access a number in a 32 bit computer, we would need to access 4 bytes of memory. If we had to access a number in a 64 bit computer, we would need to access 8 bytes of memory. It is constant time because it doesn't matter how big the number is, we still access it via the address.
+
+## Simplify Big O
+
+We focus on how the runtime grows towards infinity. We drop the constants and coefficients.
+
+When we have more complex big O expressions, we drop the less significant terms. Because as N grows towards infinity, the less significant terms become insignificant.
+
+If you've different inputs, you can use different variables to represent them. For example, if you have two arrays of different sizes, you can use N and M to represent their sizes. But do not drop any of the variables.
