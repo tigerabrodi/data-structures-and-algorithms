@@ -210,6 +210,10 @@ Linked List is stored differently in memory.
 
 **Singly Linked List:** Each element is a node. Each node has a value and a pointer to the next node.
 
+**Doubly Linked List:** Each element is a node. Each node has a value and a pointer to the next node and a pointer to the previous node.
+
+**Circular Linked List:** Each element is a node. Each node has a value and a pointer to the next node. The last node points to the first node.
+
 In memory, arrays are stored in a block of memory.
 
 Nodes of Linked Lists are dynamically allocated in the heap as the list grows. They don't occupy contiguous memory locations. Instead, each node can be anywhere in memory. The pointers in each node are used to "link" these scattered pieces together logically.
@@ -218,15 +222,29 @@ Nodes of Linked Lists are dynamically allocated in the heap as the list grows. T
 
 ### Get
 
-Getting an element by index is O(n) linear time. This is because the computer has to traverse each node in the linked list. We can't just access the memory address of the element directly. We have to traverse by jumping pointer to pointer.
+Get an element by index is O(n) linear time. This is because the computer has to traverse each node in the linked list.
 
 ### Set
 
-Setting an element by index is also O(n) linear time.
+Set an element by index is O(n) linear time. This is because the computer has to traverse each node in the linked list.
 
-### Initialize
+### Init
 
-Initializing a linked list is O(1) constant time. This is because we only have to initialize the head of the linked list.
+### Copy
+
+Copy is O(n) linear time.
+
+### Traverse
+
+Copy is O(n) linear time.
+
+### Insert
+
+Insert is O(n) linear time. This is because the computer has to traverse each node in the linked list. Find the node and then change the pointers.
+
+### Delete
+
+Copy is O(n) linear time.
 
 ## Array in memory
 
