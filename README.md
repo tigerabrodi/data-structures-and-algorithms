@@ -131,3 +131,71 @@ It's so powerful because as N grows, the runtime grows very slowly.
 Usually algorithms that involve dividing problems in half have logarithmic time complexity.
 
 # Arrays
+
+Let's say we have [1, 2, 3]. The program has to store this in memory. Imagine we have a 64 bit computer. Each number is 8 bytes. So we need 24 bytes of memory to store this array. The computer needs to find 24 bytes of free memory to store this array.
+
+For recap: A byte consists of 8 bits. A bit is the smallest unit of memory. A byte is the smallest addressable unit of memory.
+
+We have two types of arrays: static and dynamic.
+
+## Static Arrays
+
+Static arrays have fixed size. You have to specify the size of the array when you declare it. You can't add or remove elements from a static array. You can only update existing elements.
+
+### Big O Notation
+
+#### Get
+
+Getting an element by index is O(1) constant time. This is because the computer can access the memory address of the element directly. It knows where the first element is stored. From there, it can calculate the memory address of the targetted element.
+
+#### Set
+
+Setting an element by index is O(1) constant time. It is simply swapping binary values.
+
+#### Initialize
+
+Initializing an array is O(n) linear time. This is because the computer has to initialize each element in the array.
+
+#### Traverse
+
+Traversing an array is O(n) linear time. This is because the computer has to traverse each element in the array.
+
+#### Copy
+
+Copying an array is O(n) linear time. The computer first has to traverse each element in the array. Then it has to copy each element to the new array. In memory, the computer has to find a new block of memory to store the new array.
+
+People will do mistake during coding interview by thinking that copying an array is O(1) constant time. This is because they think that the computer can just copy the memory address of the array. But this is not true. The computer has to copy each element to the new array. In memory, the computer has to find a new block of memory to store the new array. You don't just simply copy.
+
+#### Insert
+
+Let's say we want to insert at place X. For the rest of the bytes in memory, we have to shift them to the right. However, the problem is that there may not be any space to the right. We would have the same problem if we want to insert at the beginning or end of array.
+
+When you insert to the array, no matter what position, the computer has to copy the entire array and find a new block of memory to store the new array.
+
+Inserting an element is O(n) linear time.
+
+#### Pop
+
+Pop means removing the last element of the array. This is O(1) constant time. This is because the computer can just remove the last element. It doesn't have to copy the entire array.
+
+## Dynamic Arrays
+
+Dynamic arrays is an array that can grow and shrink in size. It is implemented by using a static array under the hood. When the array is full, we create a new array with double the size. Then we copy the elements from the old array to the new array. Then we delete the old array.
+
+### Big O Notation
+
+#### Insert
+
+Inserting an element is typically O(1) constant time for Dynamic Arrays. Because Dynamic Arrays allocate extra space. So when we insert an element, we don't have to create a new array and copy the elements over. We can just insert the element into the extra space.
+
+However, we have to check if the array is full. If it is full, we have to create a new array with double the size. Then we copy the elements from the old array to the new array. Then we delete the old array. This is O(n) linear time. But we don't do this every time we insert. We only do this when the array is full.
+
+Because the worst case is O(n) linear time, we say that inserting an element is O(n) linear time.
+
+## Interview
+
+When doing interviews and using JS, you can use the built in array e.g. treating it as a queue. Explain to the interviewer you understand the big O of the built in array appears efficient in one way but in reality it is different.
+
+But you do not wanna have to go through the trouble of importing a queue data structure. So you can use the built in array as a queue.
+
+# Amortized Analysis
