@@ -164,7 +164,7 @@ Traversing an array is O(n) linear time. This is because the computer has to tra
 
 Copying an array is O(n) linear time. The computer first has to traverse each element in the array. Then it has to copy each element to the new array. In memory, the computer has to find a new block of memory to store the new array.
 
-People will do mistake during coding interview by thinking that copying an array is O(1) constant time. This is because they think that the computer can just copy the memory address of the array. But this is not true. The computer has to copy each element to the new array. In memory, the computer has to find a new block of memory to store the new array. You don't just simply copy.
+People will do this mistake during coding interview by thinking that copying an array is O(1) constant time. This is because they think that the computer can just copy the memory address of the array. But this is not true. The computer has to copy each element to the new array. In memory, the computer has to find a new block of memory to store the new array. You don't just simply copy.
 
 #### Insert
 
@@ -199,3 +199,7 @@ When doing interviews and using JS, you can use the built in array e.g. treating
 But you do not wanna have to go through the trouble of importing a queue data structure. So you can use the built in array as a queue.
 
 # Amortized Analysis
+
+Amortized analysis averages the time required to perform a sequence of data structure operations over all the operations performed. Unlike average-case analysis, which considers probabilities of different inputs, amortized analysis guarantees the average performance of each operation in the worst case.
+
+It provides a more realistic expectation of the algorithm's performance, especially when the algorithm has occasional costly operations.
