@@ -83,8 +83,51 @@ Accessing memory is O(1) constant time. If we had to access a number in a 32 bit
 
 ## Simplify Big O
 
-We focus on how the runtime grows towards infinity. We drop the constants and coefficients.
+We focus on how the runtime grows towards infinity. We drop the constants and coefficients. In Big O notation, you only keep the term that grows the fastest as the input size increases. This term is known as the dominant term.
 
 When we have more complex big O expressions, we drop the less significant terms. Because as N grows towards infinity, the less significant terms become insignificant.
 
 If you've different inputs, you can use different variables to represent them. For example, if you have two arrays of different sizes, you can use N and M to represent their sizes. But do not drop any of the variables.
+
+**Drop Lower Order Terms:** In O(n^2 + n), the n term is much smaller than n^2 for large n, so it's dropped, simplifying to O(n^2).
+
+**Ignore Coefficients:** Big O ignores constants because it's about growth rates. For example, O(2n) simplifies to O(n), and O(5n^2) simplifies to O(n^2).
+
+# Logarithm
+
+A logarithm is essentially another way of expressing exponentiation, which is the process of multiplying a number by itself a certain number of times. For instance, \(2^3 = 2 \times 2 \times 2 = 8\). The logarithm asks the question: "To what power do we raise a base number (like 2 in this example) to get another number?"
+
+So, in our example, the logarithm of 8 with base 2 is 3 (written as \( \log_2 8 = 3 \)) because 2 raised to the power of 3 is 8.
+
+Parts of a logarithm:
+
+1. **Base:** This is the number that is being raised to a power. In \( \log_2 8 \), 2 is the base.
+2. **Argument:** This is the number you want to find the logarithm of. In \( \log_2 8 \), 8 is the argument.
+3. **Exponent:** This is the answer to the logarithm, the power to which the base must be raised to get the argument. In \( \log_2 8 = 3 \), 3 is the exponent.
+
+## Explaination
+
+Log of 2 to N = Y iiF (only if) 2^Y = N
+
+Example: log of 2 to 8 = 3 because 2^3 = 8
+
+2^4 = 16
+
+If we double right side of equation, we add 1 to left side of equation.
+
+This means: 2^5 = 32
+
+## Input in O notation
+
+Log of N, this means when N doubles, the runtime only increases by 1. This is good. This is better than linear time because linear time would increase by 2.
+
+2^20 = 1,048,576
+2^30 = 1,073,741,824
+
+It's so powerful because as N grows, the runtime grows very slowly.
+
+## Logarithm in Big O
+
+Usually algorithms that involve dividing problems in half have logarithmic time complexity.
+
+# Arrays
