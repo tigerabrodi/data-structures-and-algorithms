@@ -214,6 +214,20 @@ In memory, arrays are stored in a block of memory.
 
 Nodes of Linked Lists are dynamically allocated in the heap as the list grows. They don't occupy contiguous memory locations. Instead, each node can be anywhere in memory. The pointers in each node are used to "link" these scattered pieces together logically.
 
+## Big O Notation
+
+### Get
+
+Getting an element by index is O(n) linear time. This is because the computer has to traverse each node in the linked list. We can't just access the memory address of the element directly. We have to traverse by jumping pointer to pointer.
+
+### Set
+
+Setting an element by index is also O(n) linear time.
+
+### Initialize
+
+Initializing a linked list is O(1) constant time. This is because we only have to initialize the head of the linked list.
+
 ## Array in memory
 
 Imagine a row of boxes, each representing an array element, placed side by side. The address of each element is predictable based on the array's base address and the size of each element.
@@ -232,6 +246,17 @@ Think of each node as a separate entity, potentially scattered in memory. Each n
 [Node 0: Data | Ptr] --> [Node 1: Data | Ptr] --> [Node 2: Data | Ptr] --> ...
    0x100          |        0x1A2          |        0x03F          |
                   -------------------------        ----------------
+```
+
+Depending on the system, 32 or 64 bit, Linked List would take up e.g. in 64 bit system, 16 bytes of memory. 8 bytes for data and 8 bytes for pointer.
+
+How it may look like for a 32 bit system:
+
+```
+[ Node 0 ]     [ Node 1 ]     [ Node 2 ]
+| 4 bytes | 4  | 4 bytes | 4  | 4 bytes | 4
+| Integer | Ptr| Integer | Ptr| Integer | Ptr
+ 0x100     0x104 0x108   0x10C 0x110   0x114
 ```
 
 ## Advantages over array
