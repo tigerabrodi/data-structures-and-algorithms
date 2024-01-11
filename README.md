@@ -462,3 +462,19 @@ It's Big O Notation for all operations is O(1) constant time.
 To peek at the front of the queue is also O(1) constant time.
 
 Adding to the queue is called enqueue. Removing from the queue is called dequeue.
+
+# Strings
+
+Strings are stored in memory as array of integers, where each character is mapped to an integer using a character encoding standard such as ASCII or Unicode.
+
+In languages like C, strings are null-terminated, meaning the end of the string is marked by a special null character ('\0').
+
+If you were to loop over something and append to a string, it would be O(n^2) quadratic time. This is because strings are immutable. So you would have to create a new string each time you append to it.
+
+## Big O Notation
+
+Traverse is O(n) linear time.
+
+Copy is O(n) linear time.
+
+Get is O(1) constant time, because under the hood, strings are stored as arrays, so getting a character by index is O(1) constant time.
