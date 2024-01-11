@@ -478,3 +478,35 @@ Traverse is O(n) linear time.
 Copy is O(n) linear time.
 
 Get is O(1) constant time, because under the hood, strings are stored as arrays, so getting a character by index is O(1) constant time.
+
+# Graphs
+
+A graph is a data structure that consists of a set of vertices (nodes) and a set of edges that relate the vertices to each other. The set of edges describes relationships among the vertices.
+
+A vertex is simply a node with a value. An edge is a line that connects two vertices.
+
+You have many different types of graphs:
+
+- Directed vs Undirected: Directed means that the edges have a direction. Undirected means that the edges do not have a direction, or better said, the edges have a direction in both ways.
+- Weighted vs Unweighted: Weighted means that the edges have a weight. Unweighted means that the edges do not have a weight. A weight is a number that describes the relationship between two vertices. For example, the weight could be the distance between two cities.
+- Cyclic vs Acyclic: Cyclic means that the graph has a cycle. Acyclic means that the graph does not have a cycle. A cycle is a path that starts and ends at the same vertex. You can think of it as a circle. You know it is a cycle if you can start at a vertex and follow the edges and eventually get back to the same vertex.
+- Dense vs Sparse: Dense means that the graph has a lot of edges. Sparse means that the graph has few edges.
+- Connected vs Disconnected: Connected means that there is a path between every pair of vertices. Disconnected means that there is not a path between every pair of vertices.
+
+## Big O Notation
+
+Storing a graph is O(V + E) linear time. This is because you have to store the vertices and the edges.
+
+To traverse a graph, there are two ways: Depth First Search (DFS) and Breadth First Search (BFS).
+
+DFS takes O(V + E) linear time.
+
+BFS takes O(V + E) linear time.
+
+## DFS
+
+DFS is a recursive algorithm that traverses the graph in a depthward motion. This means that it goes as deep as possible before going to the next vertex. So we do not check each neighbour, but rather we go as deep as possible for one neighbour how far they're connected.
+
+## BFS
+
+BFS is an algorithm that traverses the graph in a breadthward motion. This means that it goes level by level. So we check each and every single neighbour and then we check their neighbours and so on.
