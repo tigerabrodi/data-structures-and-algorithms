@@ -292,3 +292,149 @@ For doubly linked list, we would have two pointers, in total 12 bytes per node.
 - **Memory Overhead:** Each node requires extra memory for a pointer, which can be significant, especially in systems with limited memory.
 - **No Random Access:** Accessing elements is not as straightforward as in arrays, as it requires sequential access from the beginning of the list.
 - **Increased Complexity:** Implementing and managing linked lists can be more complex than arrays, with additional considerations for pointer manipulation and potential issues like memory leaks.
+
+# Hash Tables
+
+A hash table is a key value pair data structure.
+
+## Big O Notation
+
+Search, Insert, Delete is O(1) constant time on average.
+
+Considering keys may collide, the worst case is O(n) linear time.
+
+Modern implementations however, use fancy hash functions that minimize collisions, making the worst case O(1) constant time.
+
+## Under the hood
+
+Built on top of arrays. Behind the scenes, the hash table is just an array. The hash table uses a hash function to convert the key into an index of an array element. The value is then stored in the array element.
+
+### Resizing
+
+Resizing a hash table is important for maintaining its efficiency. Resizing occurs when the load factor (the ratio of the number of entries to the number of buckets) exceeds a certain threshold, commonly 0.7 or 75%. The primary goal is to reduce the number of collisions and maintain the time complexity of operations close to O(1).
+
+#### Steps in Resizing a Hash Table
+
+1. **Allocate New, Larger Array:**
+
+   - A new array, typically twice the size of the original, is allocated. This helps spread out the data more thinly, reducing collisions.
+
+2. **Rehash All Entries:**
+
+   - **Crucial Step:** Each existing entry must be rehashed according to the new array size. This is necessary because the hash values (array indices) are dependent on the array size.
+   - **Process:** Iterate through the old array, compute the new index for each element using the hash function (adjusted for the new size), and insert it into the new array.
+
+3. **Handle Collisions Anew:**
+
+   - Even with a new array, collisions will occur and need to be handled using the chosen method (chaining or open addressing).
+
+4. **Deallocate Old Array:**
+   - Once all entries are moved to the new array, the memory allocated for the old array is deallocated (in languages where manual memory management is required).
+
+#### Memory and Performance Considerations
+
+1. **Memory Overhead During Resizing:**
+
+   - Temporarily, the hash table requires memory for both the old and new arrays, which can be significant for large data sets.
+
+2. **Computational Cost:**
+
+   - Rehashing all entries is an O(n) operation, where n is the number of entries. This can lead to a temporary performance hit during the resizing process.
+
+3. **Avoiding Frequent Resizing:**
+
+   - By choosing an appropriate initial size and resizing factor (commonly doubling the size), the frequency of resizing operations can be minimized.
+
+4. **Dynamic Resizing:**
+   - Some implementations also allow for shrinking the hash table if the number of elements decreases significantly, optimizing memory usage.
+
+#### Under the Hood Example
+
+Imagine a hash table with an array of size 8 and a load factor threshold of 0.75. After inserting 6 elements (load factor = 0.75), adding one more element triggers resizing:
+
+```
+Original Array (size 8)
+| 0 | ---> [Node(Key1,Value1)]
+| 1 | ---> null
+| 2 | ---> [Node(Key2,Value2)] ---> [Node(Key5,Value5)]
+| 3 | ---> null
+| ... |
+
+Resizing Triggered...
+
+New Array (size 16)
+| 0 | ---> null
+| 1 | ---> [Node(Key1,Value1)]
+| 2 | ---> null
+| 3 | ---> [Node(Key2,Value2)]
+| 4 | ---> [Node(Key5,Value5)]
+| ... |
+```
+
+Each key is rehashed for a size 16 array, and entries are placed accordingly. This re-distribution aims to reduce future collisions.
+
+## Hash function
+
+A hash function is a function that takes in a key and returns an index. The hash function should be deterministic. This means that the same key should always return the same index.
+
+For example, if we use ASCII, we can sum up the ASCII values of the characters in the key. Then we can use the modulo operator to get the remainder of the sum divided by the size of the array. This will give us an index.
+
+Let's say we have an array with size 3.
+
+Now we got the key "foo". For example purposes, let's say the ASCII values of the characters in the key "foo" is 300. 300 % 3 = 0. So we can store the value in the array at index 0.
+
+Had the value been 301, we would have stored the value in the array at index 1, because remainder of 301 % 3 = 1.
+
+## Collisions
+
+What if we have two keys with the same hash? e.g. "foo" and "oof". Both of them have the same hash. This is called a collision.
+
+There are two ways to handle collisions.
+
+### Separate Chaining
+
+- **Concept:** Each slot of the hash table array contains a pointer to a linked list (or a similar structure) that stores all the elements hashing to the same index.
+- **Memory Interaction:**
+  - The array is an array of pointers, each pointing to a list (or being null if empty).
+  - Each list node contains the key-value pair and a pointer to the next node in the list.
+  - Additional memory is required for the pointers and the linked list structure, adding some overhead.
+
+You can also use Balanced Binary Search Tree instead of Linked List for Separate Chaining.
+
+Separate chaining visualized:
+
+```
+Hash Table Array
+|         |
+| 0       | ----> [Node(Key1,Value1) -> Node(Key2,Value2)]
+| 1       | ----> [Node(Key3,Value3)]
+| 2       | ----> null
+| ...     |
+| n-1     | ----> null
+```
+
+Each node in the linked list must contain the key and value. This is because we need to be able to find the value given the key within the linked list.
+
+### Open Addressing
+
+- **Concept:** All elements are stored within the array itself. When a collision occurs, the hash table probes for the next available slot using a probing sequence.
+- **Probing Techniques:**
+  - **Linear Probing:** Sequentially checks the next slot.
+  - **Quadratic Probing:** Checks slots at exponentially increasing distances.
+  - **Double Hashing:** Uses a second hash function to determine the probe step.
+- **Memory Interaction:**
+  - The array holds the actual data, so no additional pointers or data structures are needed.
+  - Probing can lead to "clustering" where a sequence of filled slots gets longer, slowing down the operation.
+
+Open addressing visualized with Linear Probing:
+
+```
+Hash Table Array
+|         |
+| 0       | [Key1, Value1]
+| 1       | [Key3, Value3]
+| 2       | [Key2, Value2]  <--- Collision occurred, placed in next available slot
+| 3       | null
+| ...     |
+| n-1     | null
+```
