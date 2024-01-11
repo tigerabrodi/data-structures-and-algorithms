@@ -438,3 +438,27 @@ Hash Table Array
 | ...     |
 | n-1     | null
 ```
+
+# Stacks
+
+Stacks are a LIFO (Last In First Out) data structure. The last element added to the stack will be the first element removed from the stack.
+
+It's Big O Notation for all operations is O(1) constant time.
+
+To peek at the top of the stack is also O(1) constant time.
+
+Adding to the stack is called push. Removing from the stack is called pop.
+
+## Under the hood
+
+Stacks are implemented using arrays or linked lists. Linked Lists are more efficient because they don't have to resize like arrays. So often times, stacks are implemented using linked lists.
+
+# Queues
+
+Queues are a FIFO (First In First Out) data structure. The first element added to the queue will be the first element removed from the queue.
+
+It's Big O Notation for all operations is O(1) constant time.
+
+To peek at the front of the queue is also O(1) constant time.
+
+Adding to the queue is called enqueue. Removing from the queue is called dequeue.
