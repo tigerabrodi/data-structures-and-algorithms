@@ -510,3 +510,22 @@ DFS is a recursive algorithm that traverses the graph in a depthward motion. Thi
 ## BFS
 
 BFS is an algorithm that traverses the graph in a breadthward motion. This means that it goes level by level. So we check each and every single neighbour and then we check their neighbours and so on.
+
+# Trees
+
+Tree is a type of graph. It's rooted. Every node has a parent except the root node. Every node can have children.
+
+You have parents and children. A node can have multiple children but only one parent.
+
+Trees are acyclic. This means that there are no cycles. A cycle is a path that starts and ends at the same vertex/node.
+
+Types of trees:
+
+- Binary Tree: Each node has at most two children.
+- Binary Search Tree: Each node has at most two children. The left child is less than the parent. The right child is greater than the parent.
+- Balanced Tree: A tree is balanced if the height of the left subtree and the height of the right subtree differ by at most one.
+- AVL Tree: A tree is balanced if the height of the left subtree and the height of the right subtree differ by at most one. In addition, the left and right subtrees are also AVL trees.
+
+## K-ary Tree
+
+A tree whose nodes have at most k children. A binary tree is a 2-ary tree.
